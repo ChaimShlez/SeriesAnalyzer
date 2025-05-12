@@ -17,13 +17,13 @@ namespace SeriesAnalyzer
             bool IsValid = IsValidateNums(args);
             ManegerMenu(IsValid);
         }
-
+        //manegre menu
         static void ManegerMenu(bool isValid)
         {
             if (isValid)
             {
 
-                Menu();
+               int choice= Menu();
             }
             else
             {
@@ -60,8 +60,29 @@ namespace SeriesAnalyzer
             }
             return str.ToArray();
         }
+        //menu
+        private static int Menu()
+        {
+            bool Exit = true;
+            do
+            {
+                int choice=0;
+                Console.WriteLine("Please choose an option:\n" +
+                    "if you want  input a Series ,enter 1 \n" +
+                    "if you want display the series in the order it was entered enter 2\n" +
+                    "if you want display the series in the reversed order it was entered enter 3 \n" +
+                    "if you want  display the series in sorted order enter 4 \n" +
+                    "if you want display the Max value of the series enter 5\n" +
+                    "if you want display the Min value of the series enter 6 \n" +
+                    "if you want display the Average value of the series enter 7 \n" +
+                    " if you want display the Number of elements in the series enter 8 \n" +
+                    " if you want display the Sum of the series enter 9 \n" +
+                    "if you want exit enter 10 ");
+                choice = int.Parse(Console.ReadLine());
 
-        private static void Menu();
+            } while(Exit);
+            return choice;
+        }
 
 
 
@@ -78,7 +99,7 @@ namespace SeriesAnalyzer
             int num;
             for (int i = 0; i < str.Length; i++)
             {
-                if (!int.TryParse(str[i], out num) && str[i] != " ")
+                if ((!int.TryParse(str[i], out num) && str[i] != " ")||num< 0)
                 {
                     IsValid = false;
                     break;
