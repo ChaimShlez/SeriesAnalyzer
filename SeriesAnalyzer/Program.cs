@@ -31,14 +31,35 @@ namespace SeriesAnalyzer
             }
 
         }
-
+        //function that receives numbers from the user
         private static void insertNumbersByUser()
         {
-            //Console.WriteLine("please enter numbers with spases between them");
-            //string input = Console.ReadLine();
+            Console.WriteLine("please enter numbers with spases between them");
+            string input = Console.ReadLine();
+            string[] inputByUser=insertToArr(input);
+            IsValidateNums(inputByUser);
 
         }
+        
+        //private static string[] insertToArr(string input)
+        //{
+        //    List<string> str = new List<string>();
+        //    string word = "";
+        //    foreach(char c in word)
+        //    {
+        //        if (c != ' ')
+        //        {
 
+        //            word += c;
+        //        }
+        //        else
+        //        {
+        //           str.Add(word);
+        //            word = "";
+        //        }
+        //    }
+        //    return str.ToArray();
+        //}
 
         private static void Menu();
 
