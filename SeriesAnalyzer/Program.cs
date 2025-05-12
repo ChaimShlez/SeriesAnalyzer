@@ -40,26 +40,26 @@ namespace SeriesAnalyzer
             IsValidateNums(inputByUser);
 
         }
-        
-        //private static string[] insertToArr(string input)
-        //{
-        //    List<string> str = new List<string>();
-        //    string word = "";
-        //    foreach(char c in word)
-        //    {
-        //        if (c != ' ')
-        //        {
+         //function that converts the string to an array of strings
+        private static string[] insertToArr(string input)
+        {
+            List<string> str = new List<string>();
+            string word = "";
+            foreach(char c in word)
+            {
+                if (c != ' ')
+                {
 
-        //            word += c;
-        //        }
-        //        else
-        //        {
-        //           str.Add(word);
-        //            word = "";
-        //        }
-        //    }
-        //    return str.ToArray();
-        //}
+                    word += c;
+                }
+                else
+                {
+                   str.Add(word);
+                    word = "";
+                }
+            }
+            return str.ToArray();
+        }
 
         private static void Menu();
 
