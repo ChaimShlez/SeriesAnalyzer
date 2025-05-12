@@ -8,25 +8,66 @@ using System.Threading.Tasks;
 
 namespace SeriesAnalyzer
 {
-    internal class Program
+    class Program
     {
+
+        static List<int> numbers;
         static void Main(string[] args)
         {
-            
+            bool IsValid = IsValidateNums(args);
+            ManegerMenu(IsValid);
         }
 
-        static void ManegerMenu(bool isValid);
-        
+        static void ManegerMenu(bool isValid)
+        {
+            if (isValid)
+            {
 
-        private static void insertNumbersByUser();
-       
+                Menu();
+            }
+            else
+            {
+                insertNumbersByUser();
+            }
+
+        }
+
+        private static void insertNumbersByUser()
+        {
+            //Console.WriteLine("please enter numbers with spases between them");
+            //string input = Console.ReadLine();
+
+        }
+
 
         private static void Menu();
-        
 
 
-        //function is valid
-        public static bool ValidateNums(string[] args);
+
+        //function is valid and insert array of numbers
+        public static bool IsValidateNums(string[] str)
+        {
+            bool IsValid = true;
+            if (str.Length < 3)
+            {
+                IsValid = false;
+
+            }
+
+            int num;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (!int.TryParse(str[i], out num) && str[i] != " ")
+                {
+                    IsValid = false;
+                    break;
+                }
+                numbers.Add(num);
+
+            }
+            return IsValid;
+
+        }
 
         public void GetByInserted(int[] nums);
 
