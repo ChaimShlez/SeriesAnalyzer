@@ -24,8 +24,8 @@ namespace SeriesAnalyzer
             if (isValid)
             {
 
-               int choice= Menu();
-                displayPrintByChoiceUser(choice);
+                Menu();
+               //displayPrintByChoiceUser(choice);
             }
             else
             {
@@ -34,7 +34,7 @@ namespace SeriesAnalyzer
 
         }
         //function that displays the menu 
-        private static int Menu()
+         static void Menu()
         {
             bool Exit = true;
             int choice = 0;
@@ -54,15 +54,18 @@ namespace SeriesAnalyzer
                     "if you want exit enter 10 ");
                 choice = int.Parse(Console.ReadLine());
 
+                if (choice == 10)
+                {
+                    Exit = false;
+                    Console.WriteLine("Goodbye");
+                }
+                displayPrintByChoiceUser(choice);
             } while (Exit);
-            if (choice == 10) {
-                Exit = false;
-                Console.WriteLine("Goodbye");
-            }
-            return choice;
+            
+            
         }
         //fonction that displays the result according to the choice of the user
-        private static void displayPrintByChoiceUser(int choice)
+         static void displayPrintByChoiceUser(int choice)
         {
             switch (choice)
             {
@@ -95,7 +98,7 @@ namespace SeriesAnalyzer
                     break;
 
                 default:
-                    Console.WriteLine("Invalid choice, please try again.");
+                    Console.WriteLine("Goodbye");
                     break;
 
 
@@ -104,18 +107,19 @@ namespace SeriesAnalyzer
 
 
         //function that receives numbers from the user
-        private static void insertNumbersByUser()
+         static void insertNumbersByUser()
         {
             numbers.Clear();
             Console.WriteLine("please enter numbers with spases between them");
             string input = Console.ReadLine();
 
             string[] inputByUser = insertToArr(input);
-            IsValidateNums(inputByUser);
-
+            Console.WriteLine(inputByUser);
+            bool IsValid = IsValidateNums(inputByUser);
+            ManegerMenu(IsValid);
         }
          //function that converts the string to an array of strings
-        private static string[] insertToArr(string input)
+         static string[] insertToArr(string input)
         {
             List<string> str = new List<string>();
             string word = "";
