@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analize.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Validations.cs" />
     <Compile Include="InsertByUser.cs" />

@@ -24,7 +24,7 @@ namespace SeriesAnalyzer
 
             //create class menu and pass the insertByUser to it
             Menu menu = new Menu(insertByUser);
-
+            //Analize analize = new Analize(menu);
             //
             bool IsValid =validations.IsValidateNums(args);
 

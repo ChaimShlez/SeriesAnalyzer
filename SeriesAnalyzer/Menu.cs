@@ -20,7 +20,10 @@ namespace SeriesAnalyzer
 
         public void ConvertToInt(string[] str)
         {
+
+            
             List<int> numbers = new List<int>();
+            numbers.Clear();
             for (int i = 0; i < str.Length; i++)
             {
                 if (int.TryParse(str[i], out int num))
@@ -37,7 +40,7 @@ namespace SeriesAnalyzer
         {
             bool Exit = true;
             int choice = 0;
-            do
+            while (Exit)
             {
                 Console.WriteLine();
                 Console.WriteLine("Please choose an option:\n" +
@@ -56,17 +59,20 @@ namespace SeriesAnalyzer
                     Console.WriteLine("Please enter a valid number between 1 and 10");
                     continue;
                 }
-                
 
 
+               
 
                 if (choice == 10)
                 {
                     Exit = false;
-                   
+                    //Console.WriteLine("Goodbye");
+                    
                 }
-                displayPrintByChoiceUser(choice,numbers);
-            } while (Exit);
+                displayPrintByChoiceUser(choice, numbers);
+
+            }
+            
 
 
         }
@@ -77,7 +83,7 @@ namespace SeriesAnalyzer
             switch (choice)
             {
                 case 1:
-                    numbers.Clear();
+                    
                   
                     InsertByUser.insertNumbersByUser();
 
