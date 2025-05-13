@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +9,13 @@ namespace SeriesAnalyzer
 {
     internal class Menu
     {
+
+        //constructor that receives the class insertByUser
         public Menu(InsertByUser insertByUser)
         {
             InsertByUser = insertByUser;
         }
-
+        //function that allows access to the class and thus access to what it contains
         public InsertByUser InsertByUser { get; }
 
         public void ConvertToInt(string[] str)
@@ -28,13 +31,15 @@ namespace SeriesAnalyzer
            
           DisplayMenu(numbers);
         }
+
+        //function that displays the menu and receives the choice of the user
         void DisplayMenu(List<int>numbers)
         {
             bool Exit = true;
             int choice = 0;
             do
             {
-
+                Console.WriteLine();
                 Console.WriteLine("Please choose an option:\n" +
                     "if you want  input a Series ,enter 1 \n" +
                     "if you want display the series in the order it was entered enter 2 \n" +
@@ -46,18 +51,26 @@ namespace SeriesAnalyzer
                     " if you want display the Number of elements in the series enter 8 \n" +
                     " if you want display the Sum of the series enter 9 \n" +
                     "if you want exit enter 10 ");
-                choice = int.Parse(Console.ReadLine());
+
+                if(!int.TryParse(Console.ReadLine() ,out choice)&& choice <1 ||choice>10 ){
+                    Console.WriteLine("Please enter a valid number between 1 and 10");
+                    continue;
+                }
+                
+
+
 
                 if (choice == 10)
                 {
                     Exit = false;
-                    Console.WriteLine("Goodbye");
+                   
                 }
                 displayPrintByChoiceUser(choice,numbers);
             } while (Exit);
 
 
         }
+        //function that receives numbers from the user
 
          void displayPrintByChoiceUser(int choice,List<int>numbers)
         {
@@ -103,7 +116,9 @@ namespace SeriesAnalyzer
         }
 
 
+        //functions that do analysis
 
+        //function that displays the series in the order it was entered
         public static void GetByInserted(List<int> numbers)
         {
             foreach (int number in numbers)
@@ -111,7 +126,7 @@ namespace SeriesAnalyzer
                 printNumByChoice(number);
             }
         }
-
+        //function that displays the series in avarage
         public static void GetAverage(List<int> numbers)
         {
             int sum = 0;
@@ -123,6 +138,8 @@ namespace SeriesAnalyzer
             int average = sum / numbers.Count;
             printNumByChoice(average);
         }
+
+        //function that displays the series max
         public static void GetMax(List<int> numbers)
         {
             int max = numbers[0];
@@ -136,7 +153,7 @@ namespace SeriesAnalyzer
             printNumByChoice(max);
         }
 
-
+        //function that displays the series min
         public static void GetMin(List<int> numbers)
         {
             int min = numbers[0];
@@ -149,6 +166,9 @@ namespace SeriesAnalyzer
             }
             printNumByChoice(min);
         }
+
+
+        //function that displays the series sum
         public static void GetSum(List<int> numbers)
         {
 
@@ -160,7 +180,7 @@ namespace SeriesAnalyzer
             }
             printNumByChoice(sum);
         }
-
+        // function that sorts 
         public static void GetNumbersSorted(List<int> numbers)
         {
             List<int> sortSrr = new List<int>(numbers);
@@ -182,6 +202,7 @@ namespace SeriesAnalyzer
             printArrSorted(sortSrr);
         }
 
+        //function that displays the series after sorting
         private static void printArrSorted(List<int> sortSrr)
         {
             foreach (int number in sortSrr)
@@ -190,6 +211,7 @@ namespace SeriesAnalyzer
             }
         }
 
+        //function that displays the series in the reversed 
         public static void GetNumbersReversed(List<int> numbers)
         {
             for (int i = numbers.Count - 1; i >= 0; i--)
@@ -197,17 +219,20 @@ namespace SeriesAnalyzer
                 printNumByChoice(numbers[i]);
             }
         }
+
+        //function that displays the  count number of elements in the series
         public static void GetCountNumbers(List<int> numbers)
         {
             printNumByChoice(numbers.Count);
         }
 
 
-
+        //function that prints
         public static void printNumByChoice(int num)
         {
 
-            Console.WriteLine(num);
+            Console.Write($"{num} , ");
+            
         }
 
     }

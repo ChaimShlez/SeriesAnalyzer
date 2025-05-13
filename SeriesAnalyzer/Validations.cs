@@ -33,7 +33,7 @@ namespace SeriesAnalyzer
                     IsValid = false;
                     break;
                 }
-                //numbers.Add(num);
+                
                 
             
             }
