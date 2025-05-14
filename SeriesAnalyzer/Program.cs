@@ -36,12 +36,9 @@ namespace SeriesAnalyzer
                 IsValid = IsValidateNums(strUser);
             }
 
-            bool exitProgram = DisplayMenu();
+            DisplayMenu();
 
-            if (exitProgram)
-            {
-                return; 
-            }
+            
         }
 
 
@@ -162,8 +159,8 @@ namespace SeriesAnalyzer
                         break;
                     case 10:
                         Console.WriteLine("Goodbye");
-                        return true;
-                        //break;
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Please enter a valid number between 1 and 10");
                         break;
